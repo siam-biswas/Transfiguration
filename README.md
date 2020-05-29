@@ -57,7 +57,7 @@
 
 Lets say you have an array with alphabets and you want to represent them in `UITableView`. 
 
-For doing that with `Transfigurstion` start with defining a `Transfigurator` service as an instance variable with a `Table` adapter and your array. Then all you have to do is bind this with your container and attach the view configurations with closures.
+For doing that with `Transfiguration` start with defining a `Transfigurator` service as an instance variable with a `Table` adapter and your array. Then all you have to do is bind this with your container and attach the view configurations with closures.
 
 ```swift
 class ViewController: UITableViewController {
@@ -89,8 +89,8 @@ Its the core service for `Transfiguration` which contains all the major function
 
 | Core Features                           |
 | ------------------------------------| 
-| `Bind with container`         |
-| `Map view configurations` | 
+| `Bind container`                   |
+| `Map configurations`          | 
 | `Insert Section`                   | 
 | `Update Section`                  |
 | `Delete Section`                  | 
@@ -103,7 +103,7 @@ Its the core service for `Transfiguration` which contains all the major function
 
 ## Section
 
-It basically holds a single type of data set. By default Array with any type of data is work as a section in `Transfiguration`, but you can also use the Section object with identifier,priority,header and footer to get full control. You can make your custom section by conforming to the `Sectionable`, `Identifiable` & `Operatable` protocols as per your needs. Also for composing different types of data section you can use `Ènum`.
+It basically holds a data set. By default Array with any type of data is work as a section in `Transfiguration`, but you can also use the Section object with identifier, priority, header and footer to get full control. You can make your custom section by conforming to the `Sectionable`, `Identifiable` & `Operatable` protocols as per your needs. Also for composing different types of data section you can use `Ènum`.
 
 ```swift
 
@@ -187,19 +187,10 @@ service.map.selection { ... }
          
 ```
 
-## Provider
 
-Provider holds all type of data that you are going to use. It contains the array of sections and helps `Transfigurator` to execute the operations.
+## Provider, Presenter & Adapter
 
-
-## Presenter
-
-Presenter is where you containers actual datasource & delegate functions are implemented. It holds the `Mapper` object and also creates the link between your data operation & presenting operation.
-
-
-## Adapter
-
-It contains the provider and presenter and work as a type definition for supported containers.
+Provider holds all type of data that you are going to use. It contains the array of sections and helps `Transfigurator` to execute the operations. Presenter is where you containers actual datasource & delegate functions are implemented. It holds the `Mapper` object and also creates the link between your data operation & presenting operation. Adapter contains the provider and presenter and work as a type definition for supported containers.
 
 | Adapters           |
 | ------------------| 
