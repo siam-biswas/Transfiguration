@@ -6,7 +6,7 @@
 ![UIPickerView](https://img.shields.io/badge/UIPickerView%20-F28D00.svg)
 
 
-### Mystical way to transform your data into reusable view in Swift
+### Mystical way to transform data into reusable view in Swift
 
 
 #### Transfiguration is a solution for creating data driven iOS applications with minimal block of codes. It helps you to represent your data set with reusable views like UITableView, UICollectionView or UIPickerView with minimum effort.
@@ -171,7 +171,7 @@ enum CompositionSections:Sectionable,Identifiable{
 
 ## Mapper
 
-Its where you will find all the closures related to you containers cell configuration like viewing, sizing , selecting etc. When you bind the ``Transfigurator`` service with your container it returns the associated mapper and also every mapper funtion returns `Self` instance so that you can chain your configurations. If you are not a fan of chaining then you can always use the `map` object from `Transfigurator` to access the `Mapper`.
+Its where you will find all the closures related to your containers cell configuration like viewing, sizing , selecting etc. When you bind the ``Transfigurator`` service with your container it returns the associated mapper and also every mapper funtion returns `Self` instance so that you can chain your configurations. If you are not a fan of chaining then you can always use the `map` object from `Transfigurator` to access the `Mapper`.
 
 ```swift
 
