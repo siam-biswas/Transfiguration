@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import Transfiguration
 
-indirect enum CompositionSections:Sectionable,Identifiable{
+enum CompositionSections:Sectionable,Identifiable{
     
     var identifier: String{
         switch self {
