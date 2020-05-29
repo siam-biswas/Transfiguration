@@ -38,7 +38,7 @@
       <img src="picker.GIF" width="260"/>
     </th>
     <th>
-    <img src="tag.GIF" width="260"/>
+    <img src="todo.GIF" width="260"/>
     </th>
     <th>
     <img src="stack.GIF" width="260"/>
