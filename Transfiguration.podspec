@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name        = "Transfiguration"
   s.version     = "1.0.0"
-  s.summary     = "Transform your data into reusable view with Magic"
+  s.summary     = "Mystical way to transform your data into reusable view in Swift"
   s.homepage    = "https://github.com/siam-biswas/Transfiguration"
   s.license     = { :type => "MIT" }
   s.authors     = { "Siam Biswas" => "siam.biswas@icloud.com" }

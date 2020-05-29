@@ -6,47 +6,31 @@
 ![UIPickerView](https://img.shields.io/badge/UIPickerView%20-F28D00.svg)
 
 
-#### Transform your data into reusable view with Magic !
+#### Mystical way to transform your data into reusable view in Swift
 
 
 ##### Transfiguration is a solution for creating data driven iOS applications with minimal block of codes. It helps you to represent your data set with reusable views like UITableView, UICollectionView or UIPickerView with minimum effort.
 
+
+
 <table>
   <tr>
     <th>
-      <img src="simple.GIF" width="220"/>
+      <img src="simple.GIF" width="260"/>
     </th>
     <th>
-    <img src="group.GIF" width="220"/>
+    <img src="waterfall.GIF" width="260"/>
     </th>
     <th>
-    <img src="waterfall.GIF" width="220"/>
+    <img src="grid.GIF" width="260"/>
     </th>
     <th>
-    <img src="stack.GIF" width="220"/>
-    </th>
-    <th>
-    <img src="grid.GIF" width="220"/>
-    </th>
-  </tr>
-  <tr>
-    <th>
-      <img src="tag.GIF" width="220"/>
-    </th>
-    <th>
-    <img src="card.GIF" width="220"/>
-    </th>
-    <th>
-    <img src="composition.GIF" width="220"/>
-    </th>
-    <th>
-    <img src="picker.GIF" width="220"/>
-    </th>
-    <th>
-    <img src="todo.GIF" width="220"/>
+    <img src="card.GIF" width="260"/>
     </th>
   </tr>
 </table>
+
+
 
 
 
