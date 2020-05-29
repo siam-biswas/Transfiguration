@@ -22,16 +22,16 @@ class GroupViewController: UITableViewController {
         service.insert(section: Section(identifier: "c", data: CountryService.getObjectList(prefix: "c"), header: "Country with \"C\""))
         service.insert(section: Section(identifier: "d", data: CountryService.getObjectList(prefix: "d"), header: "Country with \"D\""))
 
-        service.bind(tableView).view{ container, index, section in
+        service.bind(tableView).view{ container, indexPath, section in
             
             let view:UITableViewCell = container.dequeue()
-            view.textLabel?.text = section[index.row].name
+            view.textLabel?.text = section[indexPath.row].name
             view.accessoryType = .disclosureIndicator
             return view
             
-        }.selection { [weak self] (container,index,section) in
+        }.selection { [weak self] (container,indexPath,section) in
             
-            let details = DetailsViewController(data: section[index.row])
+            let details = DetailsViewController(data: section[indexPath.row])
             self?.navigationController?.pushViewController(details, animated: true)
             
         }

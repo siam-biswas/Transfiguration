@@ -19,25 +19,25 @@ class TagViewController: UICollectionViewController {
         collectionView.backgroundColor = UIColor.white
 
        
-        service.bind(collectionView).view{ container, indexPath, section in
+        service.bind(collectionView).view{ container, indexPath, data in
             
             let view:TagCell = container.dequeue(indexPath: indexPath)
-            view.setupData(data: section[indexPath.row])
+            view.setupData(data: data[indexPath.row])
             return view
             
-        }.sizingView{ container, indexPath, section in
+        }.sizingView{ container, indexPath, data in
             
             let view = TagCell.sizing
-            view.setupData(data: section[indexPath.row])
+            view.setupData(data: data[indexPath.row])
             return view.providerView
             
-        }.inset { (container,index,section) in
+        }.inset { (container,indexPath,data) in
             
             return UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
             
-        }.selection { [weak self] (provider,indexPath,section) in
+        }.selection { [weak self] (container,indexPath,data) in
             
-            let details = DetailsViewController(data: section[indexPath.row])
+            let details = DetailsViewController(data: data[indexPath.row])
             self?.navigationController?.pushViewController(details, animated: true)
             
         }

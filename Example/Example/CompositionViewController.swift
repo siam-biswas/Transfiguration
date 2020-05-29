@@ -59,9 +59,9 @@ class CompositionViewController: UITableViewController {
         service.insert(section: .articles(CountryService.getObjectList(prefix: "c")))
         
         
-        service.bind(tableView).view{ container, index, section in
+        service.bind(tableView).view{ container, indexPath, data in
             
-            switch section{
+            switch data{
                 
             case .images:
                 let view:ImagesCell = container.dequeue()
@@ -74,14 +74,14 @@ class CompositionViewController: UITableViewController {
                 
             case .articles(let data):
                 let view:ArticleCell = container.dequeue()
-                view.setupData(data: data[index.row])
+                view.setupData(data: data[indexPath.row])
                 return view
                 
             }
             
-        }.height { container, index, section in
+        }.height { container, indexPath, data in
             
-            switch section {
+            switch data {
                 
             case .articles:
                 return UITableView.automaticDimension
@@ -91,9 +91,9 @@ class CompositionViewController: UITableViewController {
                 return 60
             }
             
-        }.selection { [weak self] (container,indexPath,section) in
+        }.selection { [weak self] (container,indexPath,data) in
             
-            switch section{
+            switch data{
             case .articles(let data):
                 self?.details(data: data[indexPath.row])
             default: break
@@ -152,24 +152,24 @@ class TagsCell: UITableViewCell {
         
         service.append(section: CountryService.getObjectList(prefix: "a"))
         
-        service.bind(collectionView).view{ container, indexPath, section in
+        service.bind(collectionView).view{ container, indexPath, data in
             
             let view:TagCell = container.dequeue(indexPath: indexPath)
-            view.setupData(data: section[indexPath.item])
+            view.setupData(data: data[indexPath.item])
             return view
             
-        }.sizingView{ container, indexPath, section in
+        }.sizingView{ container, indexPath, data in
             
             let view = TagCell.sizing
-            view.setupData(data: section[indexPath.item])
+            view.setupData(data: data[indexPath.item])
             return view.providerView
             
-        }.inset { (container,index,section) in
+        }.inset { (container,indexPath,data) in
             
             return UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
             
-        }.selection { [weak self] (provider,indexPath,section) in
-            self?.details?(section[indexPath.item])
+        }.selection { [weak self] (container,indexPath,data) in
+            self?.details?(data[indexPath.item])
         }
         
         
@@ -239,28 +239,28 @@ class ImagesCell: UITableViewCell {
         
         service.append(section: CountryService.getObjectList(prefix: "b"))
         
-        service.bind(collectionView).view{ provider, indexPath, section in
+        service.bind(collectionView).view{ container, indexPath, data in
             
-            let view:ImageCell = provider.dequeue(indexPath: indexPath)
-            view.setupData(data: section[indexPath.item].image)
+            let view:ImageCell = container.dequeue(indexPath: indexPath)
+            view.setupData(data: data[indexPath.item].image)
             view.setupShadow()
             return view
             
-        }.size { (provider,indexPath,section) in
+        }.size { (container,indexPath,data) in
             
-            let image = section[indexPath.item].image
+            let image = data[indexPath.item].image
             let ratio = image.size.width / image.size.height
-            let height = provider.frame.height - 20
+            let height = container.frame.height - 20
             let width = height * ratio
             
             return CGSize(width: width, height: height)
             
-        }.inset { (provider,index,section) in
+        }.inset { (container,indexPath,data) in
             
             return UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
             
-        }.selection { [weak self] (provider,indexPath,section) in
-            self?.details?(section[indexPath.item])
+        }.selection { [weak self] (container,indexPath,data) in
+            self?.details?(data[indexPath.item])
         }
         
         

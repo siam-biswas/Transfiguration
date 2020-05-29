@@ -19,15 +19,15 @@ class StackViewController: UICollectionViewController {
         collectionView.backgroundColor = UIColor.white
 
        
-        service.bind(collectionView).view{ container, indexPath, section in
+        service.bind(collectionView).view{ container, indexPath, data in
             
             let view:StackCell = container.dequeue(indexPath: indexPath)
-            view.setupData(data: section[indexPath.row])
+            view.setupData(data: data[indexPath.row])
             return view
             
-        }.selection { [weak self] (container,indexPath,section) in
+        }.selection { [weak self] (container,indexPath,data) in
             
-            let details = DetailsViewController(data: section[indexPath.row])
+            let details = DetailsViewController(data: data[indexPath.row])
             self?.navigationController?.pushViewController(details, animated: true)
             
         }

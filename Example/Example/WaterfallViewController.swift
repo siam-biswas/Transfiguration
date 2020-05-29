@@ -18,21 +18,21 @@ class WaterfallViewController: UICollectionViewController {
         super.viewDidLoad()
         collectionView.backgroundColor = UIColor.white
        
-        service.bind(collectionView).view{ container, indexPath, section in
+        service.bind(collectionView).view{ container, indexPath, data in
             
             let view:WaterfallCell = container.dequeue(indexPath: indexPath)
-            view.setupData(data: section[indexPath.row])
+            view.setupData(data: data[indexPath.row])
             return view
             
-        }.sizingView{ container, indexPath, section in
+        }.sizingView{ container, indexPath, data in
             
             let view = WaterfallCell.sizing
-            view.setupData(data: section[indexPath.row])
+            view.setupData(data: data[indexPath.row])
             return view.providerView
             
-        }.selection { [weak self] (container,indexPath,section) in
+        }.selection { [weak self] (container,indexPath,data) in
             
-            let details = DetailsViewController(data: section[indexPath.row])
+            let details = DetailsViewController(data: data[indexPath.row])
             self?.navigationController?.pushViewController(details, animated: true)
             
         }

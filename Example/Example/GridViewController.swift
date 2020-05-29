@@ -18,21 +18,21 @@ class GridViewController: UICollectionViewController {
         super.viewDidLoad()
         collectionView.backgroundColor = UIColor.white
        
-        service.bind(collectionView).view{ (container, indexPath, section) in
+        service.bind(collectionView).view{ (container, indexPath, data) in
             
             let view:ImageCell = container.dequeue(indexPath: indexPath)
-            view.setupData(data: section[indexPath.row].image)
+            view.setupData(data: data[indexPath.row].image)
             return view
             
-        }.scale { (container,indexPath,section) in
+        }.scale { (container,indexPath,data) in
             
             if indexPath.row % 2 == 0 || indexPath.row % 5 == 0 || indexPath.row % 8 == 0 { return 2 }
             if indexPath.row % 3 == 0 || indexPath.row % 7 == 0 { return 4 }
             return 1
 
-        }.selection { [weak self] (container,indexPath,section) in
+        }.selection { [weak self] (container,indexPath,data) in
             
-            let details = DetailsViewController(data: section[indexPath.row])
+            let details = DetailsViewController(data: data[indexPath.row])
             self?.navigationController?.pushViewController(details, animated: true)
             
         }

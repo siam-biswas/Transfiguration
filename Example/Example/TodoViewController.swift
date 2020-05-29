@@ -19,22 +19,22 @@ class TodoViewController: UITableViewController {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add))
         
-        service.bind(tableView).view{ container, index, section in
+        service.bind(tableView).view{ container, indexPath, data in
             
             let view:UITableViewCell = container.dequeue()
-            view.textLabel?.text = section[index.row]
+            view.textLabel?.text = data[indexPath.row]
             return view
             
-        }.canEdit { container, index, section in
+        }.canEdit { container, indexPath, data in
             return true
-        }.editStyle { container, index, section in
+        }.editStyle { container, indexPath, data in
             return .delete
-        }.commitEditStyle { [weak self] container, index, section, style in
+        }.commitEditStyle { [weak self] container, indexPath, data, style in
     
             guard style == .delete else { return }
-            self?.service.delete(at: index.row, section: index.section)
+            self?.service.delete(at: indexPath.row, section: indexPath.section)
             
-        }.headerHeight { container, index, section in
+        }.headerHeight { container, indexPath, data in
             return 20
         }
         

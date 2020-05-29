@@ -24,8 +24,8 @@ class PickerViewController: UIViewController {
         super.viewDidLoad()
         setupLayout()
 
-        service.bind(pickerView).title { container, indexPath, section in
-            return section[indexPath.row].name
+        service.bind(pickerView).title { container, indexPath, data in
+            return data[indexPath.row].name
         }
     }
     

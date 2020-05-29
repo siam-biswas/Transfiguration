@@ -52,7 +52,7 @@
 
 ## Usage
 
-Start with defining a Transfigurator service as an instance variable with your desired container type and an Array of your data
+Start with defining a `Transfigurator` service as an instance variable with a container type and an Array of your data
 
 
 ```swift
@@ -88,15 +88,9 @@ Here you see we initialize the view with  `container.dequeue()` method. Which fi
 Its the core service for Transfiguration which contains all the major functionalities like binding , provider, presenter , mapper and data operations (insert/update/delete)
 
 
-
-## Provider
-
-Provider holds all type of data that you are going to use. It contains the array of sections and helps Transfigurator to execute the operations.
-
-
 ## Section
 
-It basically holds you single type of data set. By default Array with any type of data is work as a section in Transfiguration, but you can also use the Section object with identifier,priority,header and footer to get full control. Also you can make your custom section by conforming to the Sectionable,Identifiable & Operatable .
+It basically holds you single type of data set. By default Array with any type of data is work as a section in `Transfiguration`, but you can also use the Section object with identifier,priority,header and footer to get full control. Also you can make your custom section by conforming to the `Sectionable`, `Identifiable` & `Operatable` protocols.
 
 ```swift
 
@@ -104,17 +98,13 @@ let section = Section(identifier: "a", data: ["A","B","C"])
          
 ```
 
-
-## Presenter
-
-Presenter is where you containers actual datasource & delegate functions are implemented. It holds the mapper object and also creates the link between your data operation & presenting operation.
-
-
 ## Mapper
 
-Its where you will find all the closures related to you containers cell configuration like viewing, sizing , selecting etc.
+Its where you will find all the closures related to you containers cell configuration like viewing, sizing , selecting etc. When you bind the Transfigurator service with your container it returns the associated mapper and also every mapper funtion returns `Self` instance so that you can chain your configurations. If you are not a fan of chaining then you can always use the `map` object from service to access the `Mapper`.
 
 ```swift
+
+service.bind(tableView).view{ ... }.selection { ... }
 
 service.map.view { ... }
 
@@ -125,6 +115,16 @@ service.map.size { ... }
 service.map.selection { ... }
          
 ```
+
+## Provider
+
+Provider holds all type of data that you are going to use. It contains the array of sections and helps `Transfigurator` to execute the operations.
+
+
+## Presenter
+
+Presenter is where you containers actual datasource & delegate functions are implemented. It holds the `Mapper` object and also creates the link between your data operation & presenting operation.
+
 
 ## Adapter
 
@@ -141,7 +141,7 @@ It contains the provider and presenter and work as a type definition for support
 
 
 
-Transfiguration comes with some cool custom layouts for UICollectionView. If you already have experience working with UICollectionView , then you must know that how hard it is to represent dynamic sizeable views with it. Now with these custom layouts and a default sizing configuration provided by Transfiguration, working with Collections will be much easy and fun.
+Transfiguration comes with some cool custom layouts for UICollectionView. If you already have experience working with UICollectionView , then you must know that how hard it is to represent dynamic sizeable views with it. Now with these custom layouts and a default sizing configuration provided by Transfiguration, working with Collections will be much easy and fun. Checkout the Example files for the demostration of custom layouts.
 
 | Layouts                                                            |
 | --------------------------------------------------- | 
