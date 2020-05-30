@@ -103,30 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				2ABC953F246DA6770028A673 /* Transfiguration.h */,
-				2ABC9572246DA7460028A673 /* Core */,
-				2ABC9569246DA7460028A673 /* Table */,
-				2ABC95D424811CBC0028A673 /* Collection */,
-				2ABC95D524811CC50028A673 /* Picker */,
-				2ABC95A8247D25A60028A673 /* Layout */,
-				2ABC957C246DA78E0028A673 /* Extension */,
-				2ABC9540246DA6770028A673 /* Info.plist */,
-			);
-			path = Transfiguration;
-			sourceTree = "<group>";
-		};
-		2ABC9569246DA7460028A673 /* Table */ = {
-			isa = PBXGroup;
-			children = (
-				2ABC95CC24811A780028A673 /* TableAdaper.swift */,
-				2ABC95CE24811A920028A673 /* TableMapper.swift */,
-				2ABC95D024811AC50028A673 /* TablePresenter.swift */,
-			);
-			path = Table;
-			sourceTree = "<group>";
-		};
-		2ABC9572246DA7460028A673 /* Core */ = {
-			isa = PBXGroup;
-			children = (
 				2ABC956F246DA7460028A673 /* Transfigurator.swift */,
 				2ABC957F246DCB290028A673 /* Action.swift */,
 				2ABC9568246DA7460028A673 /* Provider.swift */,
@@ -136,52 +112,28 @@
 				2ABC95C82481185F0028A673 /* Adapter.swift */,
 				2ABC956C246DA7460028A673 /* Presenter.swift */,
 				2ABC95912476F5630028A673 /* Mapper.swift */,
-			);
-			path = Core;
-			sourceTree = "<group>";
-		};
-		2ABC957C246DA78E0028A673 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				2ABC95C62480723B0028A673 /* Array+Extension.swift */,
-				2ABC95E2248120DA0028A673 /* UICollectionView+Extension.swift */,
-				2ABC95D224811C3F0028A673 /* UITableView+Extension.swift */,
-				2ABC95E4248120F00028A673 /* UIView+Extension.swift */,
-				2ABC957D246DA8D90028A673 /* UIEdgeInsets+Extension.swift */,
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
-		2ABC95A8247D25A60028A673 /* Layout */ = {
-			isa = PBXGroup;
-			children = (
+				2ABC95CC24811A780028A673 /* TableAdaper.swift */,
+				2ABC95CE24811A920028A673 /* TableMapper.swift */,
+				2ABC95D024811AC50028A673 /* TablePresenter.swift */,
+				2ABC95D624811D340028A673 /* CollectionAdapter.swift */,
+				2ABC95D824811D400028A673 /* CollectionMapper.swift */,
+				2ABC95DA24811D4F0028A673 /* CollectionPresenter.swift */,
+				2ABC95DC248120200028A673 /* PickerAdapter.swift */,
+				2ABC95DE2481202C0028A673 /* PickerMapper.swift */,
+				2ABC95E0248120440028A673 /* PickerPresenter.swift */,
 				2ABC95A9247D25C30028A673 /* UICollectionViewWaterfallLayout.swift */,
 				2ABC95AB247D27CD0028A673 /* UICollectionViewTagLayout.swift */,
 				2ABC95AD247D5AAC0028A673 /* UICollectionViewStackLayout.swift */,
 				2ABC95B1247D844A0028A673 /* UICollectionViewCardLayout.swift */,
 				2ABC95B3247D87B20028A673 /* UICollectionViewGridLayout.swift */,
+				2ABC95C62480723B0028A673 /* Array+Extension.swift */,
+				2ABC95E2248120DA0028A673 /* UICollectionView+Extension.swift */,
+				2ABC95D224811C3F0028A673 /* UITableView+Extension.swift */,
+				2ABC95E4248120F00028A673 /* UIView+Extension.swift */,
+				2ABC957D246DA8D90028A673 /* UIEdgeInsets+Extension.swift */,
+				2ABC9540246DA6770028A673 /* Info.plist */,
 			);
-			path = Layout;
-			sourceTree = "<group>";
-		};
-		2ABC95D424811CBC0028A673 /* Collection */ = {
-			isa = PBXGroup;
-			children = (
-				2ABC95D624811D340028A673 /* CollectionAdapter.swift */,
-				2ABC95D824811D400028A673 /* CollectionMapper.swift */,
-				2ABC95DA24811D4F0028A673 /* CollectionPresenter.swift */,
-			);
-			path = Collection;
-			sourceTree = "<group>";
-		};
-		2ABC95D524811CC50028A673 /* Picker */ = {
-			isa = PBXGroup;
-			children = (
-				2ABC95DC248120200028A673 /* PickerAdapter.swift */,
-				2ABC95DE2481202C0028A673 /* PickerMapper.swift */,
-				2ABC95E0248120440028A673 /* PickerPresenter.swift */,
-			);
-			path = Picker;
+			path = Transfiguration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
