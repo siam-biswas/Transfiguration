@@ -1,5 +1,7 @@
 # Transfiguration
 
+![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+![CocoaPods](https://img.shields.io/cocoapods/v/Transfiguration.svg) 
 ![Platform](https://img.shields.io/badge/platforms-iOS%208.0-F28D00.svg)
 ![UITableView](https://img.shields.io/badge/UITableView%20-F28D00.svg)
 ![UICollectionView](https://img.shields.io/badge/UICollectionView%20-F28D00.svg)
@@ -264,8 +266,33 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'MyApp' do
-    pod 'Transfiguration', :git => 'https://github.com/siam-biswas/Transfiguration.git'
+    pod 'Transfiguration'
 end
+```
+
+### Carthage 
+
+You can use [Carthage](https://github.com/Carthage/Carthage) to install `Transfiguration` by adding it to your `Cartfile`:
+
+```
+github "siam-biswas/Transfiguration"
+```
+
+If you use Carthage to build your dependencies, make sure you have added `Transfiguration.framework` to the "Linked Frameworks and Libraries" section of your target, and have included them in your Carthage framework copying build phase.
+
+### Swift Package Manager
+
+You can use [The Swift Package Manager](https://swift.org/package-manager) to install `Transfiguration` by adding the proper description to your `Package.swift` file:
+
+```swift
+import PackageDescription
+
+let package = Package(
+    name: "YOUR_PROJECT_NAME",
+    dependencies: [
+        .package(url: "https://github.com/siam-biswas/Transfiguration.git", from: "1.0.1"),
+    ]
+)
 ```
 
 ### Manually
