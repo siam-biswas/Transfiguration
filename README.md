@@ -1,6 +1,6 @@
 # Transfiguration
 
-![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)
 ![CocoaPods](https://img.shields.io/cocoapods/v/Transfiguration.svg) 
 ![Platform](https://img.shields.io/badge/platforms-iOS%208.0-F28D00.svg)
 ![UITableView](https://img.shields.io/badge/UITableView%20-F28D00.svg)
