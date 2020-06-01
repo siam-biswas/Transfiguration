@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name        = "Transfiguration"
-  s.version     = "1.0.1"
+  s.version     = "1.0.2"
   s.summary     = "Mystical way to transform data into reusable view in Swift"
   s.homepage    = "https://github.com/siam-biswas/Transfiguration"
   s.license     = { :type => "MIT" }
@@ -10,5 +10,5 @@ Pod::Spec.new do |s|
   s.swift_version = "4.2"
   s.ios.deployment_target = "8.0"
   s.source   = { :git => "https://github.com/siam-biswas/Transfiguration.git", :tag => s.version }
-  s.source_files = "Source/Transfiguration/*.swift"
+  s.source_files = "Sources/Transfiguration/**/*.swift"
 end
