@@ -291,7 +291,7 @@ import PackageDescription
 let package = Package(
     name: "YOUR_PROJECT_NAME",
     dependencies: [
-        .package(url: "https://github.com/siam-biswas/Transfiguration.git", from: "1.0.1"),
+        .package(url: "https://github.com/siam-biswas/Transfiguration.git", from: "1.0.2"),
     ]
 )
 ```
