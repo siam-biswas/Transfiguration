@@ -12,23 +12,23 @@ import Transfiguration
 
 class GroupViewController: UITableViewController {
 
-    var service = Transfigurator<Table<Section<Country>>>()
 
     override func viewDidLoad() {
-        super.viewDidLoad()
+       super.viewDidLoad()
         
-        service.insert(section: Section(identifier: "a", data: CountryService.getObjectList(prefix: "a"), header: "Country with \"A\""))
-        service.insert(section: Section(identifier: "b", data: CountryService.getObjectList(prefix: "b"), header: "Country with \"B\""))
-        service.insert(section: Section(identifier: "c", data: CountryService.getObjectList(prefix: "c"), header: "Country with \"C\""))
-        service.insert(section: Section(identifier: "d", data: CountryService.getObjectList(prefix: "d"), header: "Country with \"D\""))
+       var data = Transfigurable<Section<Country>>()
+    
+        
+       data.append(Section(identifier: "a", data: CountryService.getObjectList(prefix: "a"), header: "Country with \"A\""))
+       data.append(Section(identifier: "b", data: CountryService.getObjectList(prefix: "b"), header: "Country with \"B\""))
+       data.append(Section(identifier: "c", data: CountryService.getObjectList(prefix: "c"), header: "Country with \"C\""))
+       data.append(Section(identifier: "d", data: CountryService.getObjectList(prefix: "d"), header: "Country with \"D\""))
 
-        service.bind(tableView).view{ container, indexPath, section in
-            
-            let view:UITableViewCell = container.dequeue()
+       tableView.bind(data).configure{ view, container, indexPath, section in
+        
             view.textLabel?.text = section[indexPath.row].name
             view.accessoryType = .disclosureIndicator
-            return view
-            
+    
         }.selection { [weak self] (container,indexPath,section) in
             
             let details = DetailsViewController(data: section[indexPath.row])

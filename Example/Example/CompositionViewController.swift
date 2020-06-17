@@ -10,18 +10,7 @@ import Foundation
 import UIKit
 import Transfiguration
 
-enum CompositionSections:Sectionable,Identifiable{
-    
-    var identifier: String{
-        switch self {
-        case .images:
-            return "images"
-        case .tags:
-            return "tags"
-        case .articles:
-            return "articles"
-        }
-    }
+enum CompositionSections:Sectionable{
     
     case images
     case tags
@@ -37,13 +26,11 @@ enum CompositionSections:Sectionable,Identifiable{
             return data.count
         }
     }
-    
-    
 }
 
 class CompositionViewController: UITableViewController {
     
-    var service = Transfigurator<Table<CompositionSections>>()
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,12 +41,9 @@ class CompositionViewController: UITableViewController {
     
     func setupComposition(){
         
-        service.insert(section: .images)
-        service.insert(section: .tags)
-        service.insert(section: .articles(CountryService.getObjectList(prefix: "c")))
+        let data = Transfigurable<CompositionSections>([.images,.tags,.articles(CountryService.getObjectList(prefix: "c"))])
         
-        
-        service.bind(tableView).view{ container, indexPath, data in
+        tableView.bind(data).view{ container, indexPath, data in
             
             switch data{
                 
@@ -126,8 +110,7 @@ class TagsCell: UITableViewCell {
         return collectionView
     }()
     
-    var service = Transfigurator<Collection>(data: [Country]())
-    
+      
     var details:((Country)->Void)?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -150,13 +133,10 @@ class TagsCell: UITableViewCell {
     
     func setupData() {
         
-        service.append(section: CountryService.getObjectList(prefix: "a"))
         
-        service.bind(collectionView).view{ container, indexPath, data in
-            
-            let view:TagCell = container.dequeue(indexPath: indexPath)
+        collectionView.bind(CountryService.getObjectList(prefix: "a")).configure(TagCell.self){ view, container, indexPath, data in
+        
             view.setupData(data: data[indexPath.item])
-            return view
             
         }.sizingView{ container, indexPath, data in
             
@@ -212,7 +192,6 @@ class ImagesCell: UITableViewCell {
         return collectionView
     }()
     
-    var service = Transfigurator<Collection>(data: [Country]())
     
     var details:((Country)->Void)?
     
@@ -237,9 +216,8 @@ class ImagesCell: UITableViewCell {
     
     func setupData() {
         
-        service.append(section: CountryService.getObjectList(prefix: "b"))
-        
-        service.bind(collectionView).view{ container, indexPath, data in
+       
+        collectionView.bind(CountryService.getObjectList(prefix: "b")).view{ container, indexPath, data in
             
             let view:ImageCell = container.dequeue(indexPath: indexPath)
             view.setupData(data: data[indexPath.item].image)

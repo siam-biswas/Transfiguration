@@ -16,9 +16,18 @@ DerivedData
 .idea/
 *.hmap
 *.xccheckout
+/Build/
+/DerivedData/
+/.build/
+/www
 
 #CocoaPods
 Pods
 
 #Carthage
 Carthage/Build
+
+#SPM
+/.swiftpm/
+
+

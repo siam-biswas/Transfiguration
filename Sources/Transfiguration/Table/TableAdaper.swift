@@ -25,6 +25,7 @@
 
 import Foundation
 
+@available(*, deprecated, message: "Table Adapter is depricated. Will be removed in future version")
 public struct Table<Section:Sectionable>: Adaptable{
     
     public var presenter:TablePresenter<Section>

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name        = "Transfiguration"
-  s.version     = "1.0.2"
+  s.version     = "2.0.0"
   s.summary     = "Mystical way to transform data into reusable view in Swift"
   s.homepage    = "https://github.com/siam-biswas/Transfiguration"
   s.license     = { :type => "MIT" }

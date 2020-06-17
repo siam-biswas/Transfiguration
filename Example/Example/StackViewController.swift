@@ -12,18 +12,15 @@ import Transfiguration
 
 class StackViewController: UICollectionViewController {
     
-    let service = Transfigurator<Collection>(data: CountryService.objectList)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = UIColor.white
 
        
-        service.bind(collectionView).view{ container, indexPath, data in
+        collectionView.bind(CountryService.objectList).configure(StackCell.self){ view, container, indexPath, data in
             
-            let view:StackCell = container.dequeue(indexPath: indexPath)
             view.setupData(data: data[indexPath.row])
-            return view
             
         }.selection { [weak self] (container,indexPath,data) in
             

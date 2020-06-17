@@ -58,45 +58,80 @@
 
 ## Usage
 
-Lets say you have an array with alphabets and you want to represent them in `UITableView`. 
 
-For doing that with `Transfiguration` start with defining a `Transfigurator` service as an instance variable with a `Table` adapter and your array. Then all you have to do is bind this with your container and attach the view configurations with closures.
+### Scenario One
+
+Lets say you have an array with alphabets and you want to represent them in `UITableView`. 
+For doing that with `Transfiguration` all you have to do is bind your data with your tableView and attach the view configurations with closures.
 
 ```swift
 class ViewController: UITableViewController {
-    
-    let service = Transfigurator<Table>(data:  ["A","B","C",.....])
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        service.bind(tableView).view{ container, indexPath, data in
-            
-            let view:UITableViewCell = container.dequeue()
-            view.textLabel?.text = data[indexPath.row]
-            return view
-            
+        tableView.bind(["A","B","C"]).configure{ view, container, indexPath, data in
+            view.textLabel?.text = data[indexPath.row].name
         }
+
     }
-    
+
 }
+
 ```
 
-Whats happening here is , when you bind the `Transfigurator` with `tableView`, it autimatically manage the datasource and delegate methods inside and also set an observer for your data operations so that you never have to call the `tableView.reloadData()` again !
+### Scenario Two
 
-Here you see we initialize the cell with  `container.dequeue()` method. Which first registered you cell with the container & then return a reusable instance with a default identifier. 
+Now you want to represent your alphabets array with `UICollectionView`. 
+The necceserry step is pretty much same as the previous with an aditional mentioning of your custom `View Type` and size configuration
 
-## Transfigurator
+```swift
 
-Its the core service for `Transfiguration` which contains all the major functionalities like binding, mapping and data operations. You can also controll whether to animate the data operations while presenting.
+class CustomCell : UICollectionViewCell { ... }
 
-| Core Features                           |
+class ViewController: UICollectionViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+       collectionView.bind(["A","B","C"]).configure(CustomCell.self){ view, container, indexPath, data in
+            view.setupData(data: data[indexPath.row])
+        }.size{ container, indexPath, data in
+            return CGSize(width: 100, height: 100)
+        }
+
+    }
+
+}
+
+```
+
+### Scenario Three
+
+Now finally you have a `UIPickerView` and you want to populate that with your alphabets array. Lets see the way to do it.
+
+```swift
+
+pickerView.bind(["A","B","C"]).title{ container, indexPath, data in
+    return data[indexPath.row]
+}
+
+```
+
+These are the very basic usage of `Transfiguration`. For getting idea about some more complex scenarios please check the Example files. 
+
+
+## Transfigurable
+
+By wrapping your data with `Transfigurable`, you can access all available data operations. It basically sets an observer for your data operations  so that you never have to call the `reloadData()`  or relevent functios from your view layer. You can also controll animations and force reload while executing this operations.
+
+| Available Operations                 |
 | ------------------------------------| 
-| `Bind container`                   |
-| `Map configurations`          | 
+| `Append Section`                   | 
 | `Insert Section`                   | 
 | `Update Section`                  |
-| `Delete Section`                  | 
+| `Remove Section`                  | 
+| `Append Item`                       | 
 | `Insert Item`                       | 
 | `Update Item`                       |
 | `Delete Item`                       | 
@@ -104,111 +139,69 @@ Its the core service for `Transfiguration` which contains all the major function
 
 
 
-## Section
+## Sectionable
 
-It basically holds a data set. By default Array with any type of data is work as a section in `Transfiguration`, but you can also use the Section object with identifier, priority, header and footer to get full control. You can make your custom section by conforming to the `Sectionable`, `Identifiable` & `Operatable` protocols as per your needs. Also for composing different types of data section you can use `Ènum`.
-
-```swift
-
-let section = ["A","B","C"]
-         
-```
+The data holder you are binding with your list or grid view must be conformed by `Sectionable`. You can make your custom sections by conforming to the `Sectionable`  protocol. Also for composing different types of data section you can use `Ènum`.
 
 ```swift
-
-let section = Section(identifier: "a", data: ["A","B","C"], header: "some header", footer: "some footer", priority: 0)
-         
-```
-
-```swift
-
-class CustomSection: Sectionable,Identifiable,Operatable{
-
-    var identifier: String
-    var priority: Int?
+class CustomSection: Sectionable {
 
     var header:String?
     var footer:String?
-
     var count: Int
-    var data: [String]
     
 }
-         
 ```
 
 ```swift
-
-enum CompositionSections:Sectionable,Identifiable{
-    
-    case images
-    case tags
-    case articles([String])
-    
-    var identifier: String{
-        switch self {
-        case .images:
-            return "images"
-        case .tags:
-            return "tags"
-        case .articles:
-            return "articles"
-        }
-    }
-    
-    var count:Int {
-        switch self {
-        case .images:
-            return 1
-        case .tags:
-            return 1
-        case .articles(let data):
-            return data.count
-        }
-    }
-    
-    
+enum CompositionSections: Sectionable {
+   case image,video,text
 }
-         
 ```
 
-## Mapper
+## Operatable
 
-Its where you will find all the closures related to your containers cell configuration like viewing, sizing , selecting etc. When you bind the ``Transfigurator`` service with your container it returns the associated mapper and also every mapper funtion returns `Self` instance so that you can chain your configurations. If you are not a fan of chaining then you can always use the `map` object from `Transfigurator` to access the `Mapper`.
+`Operatable` gives your `Sectionable`  data some ability for data operations like append, insert, update & remove.
+
 
 ```swift
-
-service.bind(tableView).view{ ... }.selection { ... }
-
-service.map.view { ... }
-
-service.map.height { ... }
-
-service.map.size { ... }
-
-service.map.selection { ... }
-         
+class CustomSection: Sectionable,Operatable { 
+   var data: [String]
+}
 ```
 
+```swift
+enum CompositionSections: Sectionable,Operatable { .... }
+```
 
-## Provider, Presenter & Adapter
+## Identifiable
 
-Provider holds all type of data that you are going to use. It contains the array of sections and helps `Transfigurator` to execute the operations. Presenter is where you containers actual datasource & delegate functions are implemented. It holds the `Mapper` object and also creates the link between your data operation & presenting operation. Adapter contains the provider and presenter and work as a type definition for supported containers.
+By conforming to `Identifiable` your  `Sectionable`  data  can gets a unique identity and priority for precise data operations. 
 
-| Adapters           |
-| ------------------| 
-| `Table`             |
-| `Collection`  | 
-| `Picker`          | 
+
+```swift
+class CustomSection: Sectionable,Operatable,Identifiable {
+    var identifier: String
+    var priority: Int?
+}
+```
+
+```swift
+enum CompositionSections: Sectionable,Operatable,Identifiable { .... }
+```
 
 
 ## Custom Layouts 
 
+Transfiguration comes with some cool custom layouts for `UICollectionView`.
 
-
-Transfiguration comes with some cool custom layouts for UICollectionView. If you already have experience working with UICollectionView , then you must know that how hard it is to represent dynamic sizeable views with it. Now with these custom layouts and a default sizing configuration provided by Transfiguration, working with Collections will be much easy and fun. Checkout the Example files for the demostration of custom layouts.
-
-
+| Available Layouts                                            |
+| --------------------------------------------------- | 
+| `UICollectionViewWaterfallLayout`       |
+| `UICollectionViewTagLayout`                   | 
+| `UICollectionViewStackLayout`              | 
+| `UICollectionViewCardLayout`                |
+| `UICollectionViewGridLayout`                | 
 
 ```swift
 
@@ -226,35 +219,31 @@ let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout
          
 ```
 
+Checkout the Example files for the demostration of all custom layouts.
+
+
+## Dynamic Sizing
+
+If you already have experience working with `UICollectionView` , then you must know that how hard it is to represent dynamic sizeable views with it. Now with a default sizing configuration provided by Transfiguration, working with Collections will be much easy and fun.
+
 ```swift
 
-transfigurator.bind(collectionView).view{ container, indexPath, data in
-    
-    let view:CustomCell = container.dequeue(indexPath: indexPath)
-    view.setupData(data: data[indexPath.item])
-    return view
-    
+collectionView.bind(["A","B","C"]).configure(CustomCell.self){ view, container, indexPath, data in
+
+    view.setupData(data: data[indexPath.row])
+
 }.sizingView{ container, indexPath, data in
     
-    let view = CustomCell.staticSizingInstance
-    view.setupData(data: data[indexPath.item])
-    return view.sizingView
-    
+    let view = CustomCell.sizing
+    view.setupData(data: data[indexPath.row])
+    return view.contanerView
+        
 }
-         
-```
 
+```
 
 While using the `sizing` configuration , please ensure that your view has all required auto layout setup for dynamic height or width. Also it is recommended to use a Static instance of your dynamic cell for better performance.
 
-
-| Available Layouts                                            |
-| --------------------------------------------------- | 
-| `UICollectionViewWaterfallLayout`       |
-| `UICollectionViewTagLayout`                   | 
-| `UICollectionViewStackLayout`              | 
-| `UICollectionViewCardLayout`                |
-| `UICollectionViewGridLayout`                | 
 
 ## Installation
 
@@ -291,7 +280,7 @@ import PackageDescription
 let package = Package(
     name: "YOUR_PROJECT_NAME",
     dependencies: [
-        .package(url: "https://github.com/siam-biswas/Transfiguration.git", from: "1.0.2"),
+        .package(url: "https://github.com/siam-biswas/Transfiguration.git", from: "2.0.0"),
     ]
 )
 ```

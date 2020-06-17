@@ -25,7 +25,7 @@
 
 import Foundation
 
-
+@available(*, deprecated, message: "Picker Adapter is depricated. Will be removed in future version")
 public struct Picker<Section:Sectionable>: Adaptable{
     public var presenter:PickerPresenter<Section>
     public init(provider:Provider<Section>,action: Actionable<Action>) {

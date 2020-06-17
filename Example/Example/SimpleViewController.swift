@@ -12,17 +12,14 @@ import Transfiguration
 
 class SimpleViewController: UITableViewController {
 
-    let service = Transfigurator<Table>(data: CountryService.objectList)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        service.bind(tableView).view{ container, indexPath, data in
+        
+        tableView.bind(CountryService.objectList).configure{ view, container, indexPath, data in
             
-            let view:UITableViewCell = container.dequeue()
             view.textLabel?.text = data[indexPath.row].name
             view.accessoryType = .disclosureIndicator
-            return view
             
         }.selection { [weak self] (container,indexPath,data) in
             

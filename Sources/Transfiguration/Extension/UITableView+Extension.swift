@@ -26,7 +26,30 @@
 import Foundation
 import UIKit
 
+private var key: Void? = nil
+
 public extension UITableView{
+    
+    var transfigurable: Any? {
+          get { return objc_getAssociatedObject(self, &key) ?? nil }
+          set { objc_setAssociatedObject(self, &key, newValue, .OBJC_ASSOCIATION_RETAIN) }
+    }
+    
+    func bind<T:Sectionable>(_ data:T) -> TableMapper<T>{
+        
+        let transfigurable = Transfigurable(data)
+        let presenter:TablePresenter<T> = TablePresenter(provider: transfigurable.provider, action: transfigurable.action)
+        transfigurable.presenter = presenter
+        self.transfigurable = transfigurable
+        return presenter.bind(self)
+    }
+    
+    func bind<T:Sectionable>(_ data:Transfigurable<T>) -> TableMapper<T>{
+        let presenter:TablePresenter<T> = TablePresenter(provider: data.provider, action: data.action)
+        data.presenter = presenter
+        self.transfigurable = data
+        return presenter.bind(self)
+    }
     
     func dequeue<T:UITableViewCell>(identifier:String? = nil,register:Bool = true) -> T{
         guard let cell = self.dequeueReusableCell(withIdentifier: identifier ?? T.identifier) as? T else{

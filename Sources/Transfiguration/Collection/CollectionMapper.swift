@@ -44,6 +44,17 @@ open class CollectionMapper<Data:Sectionable>: Mapper<UICollectionViewCell,UICol
     }
     
     @discardableResult
+    open func configure<T:UICollectionViewCell>(_ type:T.Type? = nil,content:@escaping (inout T,Container,IndexPath,Data) -> Void) -> Self{
+
+           _view = { container,index,data in
+               var view:T = container.dequeue(indexPath: index)
+               content(&view,container,index,data)
+               return view
+           }
+           return self
+       }
+    
+    @discardableResult
     open func sizingView(_ content:@escaping ContentSizingView) -> Self{
         _sizingView = content
         return self

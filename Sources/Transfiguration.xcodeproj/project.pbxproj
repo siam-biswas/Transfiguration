@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2AB0E5402496281F00D9F6C7 /* UIPickerView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB0E53F2496281F00D9F6C7 /* UIPickerView+Extension.swift */; };
 		2ABC9541246DA6770028A673 /* Transfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 2ABC953F246DA6770028A673 /* Transfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2ABC963B2484BDD10028A673 /* UICollectionViewGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC96362484BDD10028A673 /* UICollectionViewGridLayout.swift */; };
 		2ABC963C2484BDD10028A673 /* UICollectionViewStackLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC96372484BDD10028A673 /* UICollectionViewStackLayout.swift */; };
@@ -16,7 +17,7 @@
 		2ABC96492484BDDC0028A673 /* Identification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC96402484BDDC0028A673 /* Identification.swift */; };
 		2ABC964A2484BDDC0028A673 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC96412484BDDC0028A673 /* Section.swift */; };
 		2ABC964B2484BDDC0028A673 /* Adapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC96422484BDDC0028A673 /* Adapter.swift */; };
-		2ABC964C2484BDDC0028A673 /* Transfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC96432484BDDC0028A673 /* Transfigurator.swift */; };
+		2ABC964C2484BDDC0028A673 /* Transfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC96432484BDDC0028A673 /* Transfiguration.swift */; };
 		2ABC964D2484BDDC0028A673 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC96442484BDDC0028A673 /* Provider.swift */; };
 		2ABC964E2484BDDC0028A673 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC96452484BDDC0028A673 /* Presenter.swift */; };
 		2ABC964F2484BDDC0028A673 /* Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABC96462484BDDC0028A673 /* Operation.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2AB0E53F2496281F00D9F6C7 /* UIPickerView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPickerView+Extension.swift"; sourceTree = "<group>"; };
 		2ABC953C246DA6770028A673 /* Transfiguration.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Transfiguration.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ABC953F246DA6770028A673 /* Transfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Transfiguration.h; sourceTree = "<group>"; };
 		2ABC9540246DA6770028A673 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -50,7 +52,7 @@
 		2ABC96402484BDDC0028A673 /* Identification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identification.swift; sourceTree = "<group>"; };
 		2ABC96412484BDDC0028A673 /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		2ABC96422484BDDC0028A673 /* Adapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Adapter.swift; sourceTree = "<group>"; };
-		2ABC96432484BDDC0028A673 /* Transfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transfigurator.swift; sourceTree = "<group>"; };
+		2ABC96432484BDDC0028A673 /* Transfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transfiguration.swift; sourceTree = "<group>"; };
 		2ABC96442484BDDC0028A673 /* Provider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		2ABC96452484BDDC0028A673 /* Presenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		2ABC96462484BDDC0028A673 /* Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operation.swift; sourceTree = "<group>"; };
@@ -125,7 +127,7 @@
 				2ABC96452484BDDC0028A673 /* Presenter.swift */,
 				2ABC96442484BDDC0028A673 /* Provider.swift */,
 				2ABC96412484BDDC0028A673 /* Section.swift */,
-				2ABC96432484BDDC0028A673 /* Transfigurator.swift */,
+				2ABC96432484BDDC0028A673 /* Transfiguration.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -164,10 +166,11 @@
 			isa = PBXGroup;
 			children = (
 				2ABC96532484BDE70028A673 /* Array+Extension.swift */,
-				2ABC96542484BDE70028A673 /* UICollectionView+Extension.swift */,
 				2ABC96522484BDE70028A673 /* UIEdgeInsets+Extension.swift */,
-				2ABC96552484BDE70028A673 /* UITableView+Extension.swift */,
 				2ABC96562484BDE70028A673 /* UIView+Extension.swift */,
+				2ABC96552484BDE70028A673 /* UITableView+Extension.swift */,
+				2ABC96542484BDE70028A673 /* UICollectionView+Extension.swift */,
+				2AB0E53F2496281F00D9F6C7 /* UIPickerView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -267,10 +270,11 @@
 				2ABC963B2484BDD10028A673 /* UICollectionViewGridLayout.swift in Sources */,
 				2ABC963F2484BDD10028A673 /* UICollectionViewTagLayout.swift in Sources */,
 				2ABC965A2484BDE70028A673 /* UITableView+Extension.swift in Sources */,
-				2ABC964C2484BDDC0028A673 /* Transfigurator.swift in Sources */,
+				2ABC964C2484BDDC0028A673 /* Transfiguration.swift in Sources */,
 				2ABC963E2484BDD10028A673 /* UICollectionViewWaterfallLayout.swift in Sources */,
 				2ABC96672484BDFE0028A673 /* PickerPresenter.swift in Sources */,
 				2ABC966C2484BE080028A673 /* TablePresenter.swift in Sources */,
+				2AB0E5402496281F00D9F6C7 /* UIPickerView+Extension.swift in Sources */,
 				2ABC96492484BDDC0028A673 /* Identification.swift in Sources */,
 				2ABC96602484BDF10028A673 /* CollectionPresenter.swift in Sources */,
 				2ABC96652484BDFE0028A673 /* PickerAdapter.swift in Sources */,
@@ -421,7 +425,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.2;
+				CURRENT_PROJECT_VERSION = 2.0.0;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -435,7 +439,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.siambiswas.Transfiguration;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -449,7 +453,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.2;
+				CURRENT_PROJECT_VERSION = 2.0.0;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -463,7 +467,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.siambiswas.Transfiguration;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

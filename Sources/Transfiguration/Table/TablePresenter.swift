@@ -49,7 +49,6 @@ public class TablePresenter<Section: Sectionable>: Presenter<UITableViewDelegate
             }
         })
         
-        
        
         return self.map
     }

@@ -25,7 +25,7 @@
 
 import Foundation
 
-
+@available(*, deprecated, message: "Adaptable is depricated. Will be removed in future version")
 public protocol Adaptable {
     
     associatedtype Presenter:Presentable

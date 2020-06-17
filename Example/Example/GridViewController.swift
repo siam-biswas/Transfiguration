@@ -12,17 +12,14 @@ import Transfiguration
 
 class GridViewController: UICollectionViewController {
     
-    let service = Transfigurator<Collection>(data: CountryService.objectList)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = UIColor.white
        
-        service.bind(collectionView).view{ (container, indexPath, data) in
+        collectionView.bind(CountryService.objectList).configure(ImageCell.self){ (view,container, indexPath, data) in
             
-            let view:ImageCell = container.dequeue(indexPath: indexPath)
             view.setupData(data: data[indexPath.row].image)
-            return view
             
         }.scale { (container,indexPath,data) in
             

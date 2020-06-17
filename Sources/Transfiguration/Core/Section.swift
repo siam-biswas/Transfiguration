@@ -25,14 +25,19 @@
 
 import Foundation
 
+private var key: Void? = nil
+
 public protocol Sectionable{
     
     var header:String? { get set }
     var footer:String? { get set }
     var count:Int { get }
+    
+    
 }
 
 public extension Sectionable{
+    
    var header: String?{
       get { return nil } set { }
    }
@@ -40,12 +45,14 @@ public extension Sectionable{
    var footer: String?{
       get { return nil } set { }
    }
+    
+    
 }
 
 
 
 public class Section<T>: Sectionable,Identifiable,Operatable{
-
+    
     public var identifier: String
     public var priority: Int?
     

@@ -25,7 +25,7 @@
 
 import Foundation
 
-
+@available(*, deprecated, message: "Collection Adapter is depricated. Will be removed in future version")
 public struct Collection<Section:Sectionable>:Adaptable{
     public var presenter:CollectionPresenter<Section>
     public init(provider:Provider<Section>,action:Actionable<Action>) {

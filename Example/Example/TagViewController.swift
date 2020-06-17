@@ -12,18 +12,15 @@ import Transfiguration
 
 class TagViewController: UICollectionViewController {
     
-    let service = Transfigurator<Collection>(data: CountryService.objectList)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = UIColor.white
 
        
-        service.bind(collectionView).view{ container, indexPath, data in
-            
-            let view:TagCell = container.dequeue(indexPath: indexPath)
+        collectionView.bind(CountryService.objectList).configure(TagCell.self){ view, container, indexPath, data in
+        
             view.setupData(data: data[indexPath.row])
-            return view
             
         }.sizingView{ container, indexPath, data in
             

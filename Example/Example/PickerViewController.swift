@@ -11,8 +11,6 @@ import UIKit
 import Transfiguration
 
 class PickerViewController: UIViewController {
-
-    let service = Transfigurator<Picker>(data: CountryService.objectList)
     
     let pickerView:UIPickerView = {
         let view = UIPickerView()
@@ -24,7 +22,7 @@ class PickerViewController: UIViewController {
         super.viewDidLoad()
         setupLayout()
 
-        service.bind(pickerView).title { container, indexPath, data in
+        pickerView.bind(CountryService.objectList).title { container, indexPath, data in
             return data[indexPath.row].name
         }
     }

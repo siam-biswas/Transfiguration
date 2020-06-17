@@ -31,6 +31,7 @@ public class TableMapper<Data:Sectionable>: Mapper<UITableViewCell,UITableView,D
     public typealias ContentBool = (Container,IndexPath,Data) -> Bool
     public typealias ContentEditStyle = (Container,IndexPath,Data) -> UITableViewCell.EditingStyle
     public typealias ContentCommitEditStyle = (Container,IndexPath,Data,UITableViewCell.EditingStyle) -> Void
+
     
     var _canEdit:ContentBool?
     var _canMove:ContentBool?
@@ -64,6 +65,17 @@ public class TableMapper<Data:Sectionable>: Mapper<UITableViewCell,UITableView,D
     @discardableResult
     open func view(_ content:@escaping ContentView) -> Self{
         _view = content
+        return self
+    }
+    
+    @discardableResult
+    open func configure<T:UITableViewCell>(_ type:T.Type? = nil,content:@escaping (inout T,Container,IndexPath,Data) -> Void) -> Self{
+        
+        _view = { container,index,data in
+            var view:T = container.dequeue()
+            content(&view,container,index,data)
+            return view
+        }
         return self
     }
     

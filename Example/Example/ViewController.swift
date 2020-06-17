@@ -13,8 +13,6 @@ import Transfiguration
 
 class ViewController: UITableViewController {
     
-    let service = Transfigurator<Table>(data: Type.allCases)
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,12 +20,10 @@ class ViewController: UITableViewController {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         tableView.tableFooterView = UIView()
         
-        service.bind(tableView).view{ container, indexPath, data in
+        tableView.bind(Type.allCases).configure{ view, container, indexPath, data in
             
-            let view:UITableViewCell = container.dequeue()
             view.textLabel?.text = data[indexPath.row].title
             view.accessoryType = .disclosureIndicator
-            return view
             
         }.selection { [weak self] container,indexPath,data in
             data[indexPath.row].select(from: self)
